@@ -1,5 +1,9 @@
+package ssdata;
 import java.util.List;
 //import javax.xml.bind.J
+
+
+
 
 
 
@@ -8,19 +12,10 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder = {"description", "modules"})
+@XmlType(propOrder = {"description", "beginDate", "endDate", "modules"})
 @XmlRootElement(name = "Course")
-public class SSCourse {
-	private String description;
+public class SSCourse extends SSBase{
 	private List<SSCourseModule> modules;
-	
-	public String getDescription() {
-		return description;
-	}
-	@XmlElement(name = "description")
-	public void setDescription(String description) {
-		this.description = description;
-	}
 	
 	public List<SSCourseModule> getModules() {
 		return modules;
