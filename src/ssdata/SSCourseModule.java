@@ -3,11 +3,11 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
+//import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlType(propOrder = {"description", "beginDate", "endDate", "lessons"})
-@XmlRootElement(name = "module")
+//@XmlRootElement(name = "module")
 public class SSCourseModule extends SSBase{
 	private List<SSLesson> lessons;
 	

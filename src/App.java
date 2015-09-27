@@ -8,6 +8,8 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import com.google.gson.Gson;
+
 import ssdata.*;
 
 
@@ -74,7 +76,7 @@ public class App {
 		coursesList.add(javaCourse);
 		courses.setCourse(coursesList);
 		
-		try {
+		/*try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(SSCourses.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 			jaxbMarshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
@@ -83,12 +85,17 @@ public class App {
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
+		Gson gson = new Gson();
+		String jsonCourses = gson.toJson(courses);
+		System.out.println(jsonCourses);
 		
 		System.out.println("writed, read:");
 		
 		SSCourses readenCourses = new SSCourses();
-		File data = new File("data.xml");
+		readenCourses = gson.fromJson(jsonCourses, SSCourses.class);
+		System.out.println(gson.toJson(readenCourses));
+		/*File data = new File("data.xml");
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(SSCourses.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
@@ -100,7 +107,7 @@ public class App {
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 	}
 
