@@ -4,10 +4,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
-@XmlType(propOrder = {"description", "beginDate", "endDate", "text"})
+@XmlType(propOrder = {"name", "description", "beginDate", "endDate", "text"})
 //@XmlRootElement(name = "Lesson")
 public class SSLesson extends SSBase{
-	
 	private String text;
 	
 	
@@ -18,4 +17,5 @@ public class SSLesson extends SSBase{
 	public void setText(String text) {
 		this.text = text;
 	}
+	
 }

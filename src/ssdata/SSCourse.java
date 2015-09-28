@@ -1,6 +1,7 @@
 package ssdata;
-import java.util.List;
+import java.util.LinkedHashSet;
 //import javax.xml.bind.J
+
 
 
 
@@ -12,22 +13,24 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 //import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder = {"description", "beginDate", "endDate", "modules"})
+@XmlType(propOrder = {"name", "description", "beginDate", "endDate", "modules"})
 //@XmlRootElement(name = "Course")
 public class SSCourse extends SSBase{
-	private List<SSCourseModule> modules;
+	private LinkedHashSet<SSCourseModule> modules;
 	
-	public List<SSCourseModule> getModules() {
+	public LinkedHashSet<SSCourseModule> getModules() {
 		return modules;
 	}
 	
 	@XmlElementWrapper( name="modules" )
 	@XmlElement(name = "module")
-	public void setModules(List<SSCourseModule> modules) {
+	public void setModules(LinkedHashSet<SSCourseModule> modules) {
 		this.modules = modules;
 	}
 	
-	
+	public void add(SSCourseModule module){
+		modules.add(module);
+	}
 }
 
 

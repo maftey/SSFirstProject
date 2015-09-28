@@ -1,20 +1,23 @@
 package ssdata;
-import java.util.List;
+import java.util.LinkedHashSet;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "Courses")
 public class SSCourses {
-	private List<SSCourse> course;
+	private LinkedHashSet<SSCourse> courses;
 
-	public List<SSCourse> getCourse() {
-		return course;
+	public LinkedHashSet<SSCourse> getCourse() {
+		return courses;
 	}
 
 	@XmlElement(name = "Course")
-	public void setCourse(List<SSCourse> course) {
-		this.course = course;
+	public void setCourse(LinkedHashSet<SSCourse> course) {
+		this.courses = course;
 	}
 
+	public void add(SSCourse course){
+		courses.add(course);
+	}
 }
