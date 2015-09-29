@@ -1,4 +1,5 @@
 package ssdata;
+
 import java.util.GregorianCalendar;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -10,8 +11,7 @@ public abstract class SSBase {
 	private String description;
 	private GregorianCalendar beginDate;
 	private GregorianCalendar endDate;
-	
-	
+
 	@XmlElement(name = "description")
 	public void setDescription(String description) {
 		this.description = description;
@@ -20,11 +20,11 @@ public abstract class SSBase {
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public GregorianCalendar getBeginDate() {
 		return beginDate;
 	}
-	
+
 	@XmlElement(name = "beginDate")
 	public void setBeginDate(GregorianCalendar beginDate) {
 		this.beginDate = beginDate;
@@ -33,7 +33,7 @@ public abstract class SSBase {
 	public GregorianCalendar getEndDate() {
 		return endDate;
 	}
-	
+
 	@XmlElement(name = "endDate")
 	public void setEndDate(GregorianCalendar endDate) {
 		this.endDate = endDate;
@@ -42,7 +42,7 @@ public abstract class SSBase {
 	public String getName() {
 		return name;
 	}
-	
+
 	@XmlElement(name = "name")
 	public void setName(String name) {
 		this.name = name;
@@ -56,7 +56,7 @@ public abstract class SSBase {
 		return result;
 	}
 
-	//TODO: maybe move it in child classes
+	// TODO: maybe move it in child classes
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -73,6 +73,5 @@ public abstract class SSBase {
 			return false;
 		return true;
 	}
-	
-	
+
 }

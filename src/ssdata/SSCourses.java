@@ -1,4 +1,5 @@
 package ssdata;
+
 import java.util.LinkedHashSet;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -17,7 +18,7 @@ public class SSCourses {
 		this.courses = course;
 	}
 
-	public void add(SSCourse course){
+	public void add(SSCourse course) {
 		courses.add(course);
 	}
 }
