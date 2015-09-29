@@ -90,7 +90,14 @@ public class App {
 		coursesList.add(javaCourse);
 		courses.setCourse(coursesList);
 		
-		try {
+		SSDb xmlDb = new SSXmlDb();
+		SSDb jsonDb = new SSJsonDb();
+		
+		xmlDb.saveToFile(courses, new File("data.xml"));
+		jsonDb.saveToFile(courses, new File("data.json"));
+		System.out.println(xmlDb.marshal(courses));
+		System.out.println(jsonDb.marshal(courses));
+		/*try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(SSCourses.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 			jaxbMarshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
@@ -99,18 +106,24 @@ public class App {
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		Gson gson = new Gson();
+		}*/
+		/*Gson gson = new Gson();
 		String jsonCourses = gson.toJson(courses);
-		System.out.println(jsonCourses);
+		System.out.println(jsonCourses);*/
 		
 		System.out.println("writed, read:");
 		
 		SSCourses readenCourses = new SSCourses();
-		readenCourses = gson.fromJson(jsonCourses, SSCourses.class);
-		System.out.println(gson.toJson(readenCourses));
-		File data = new File("data.xml");
-		try {
+		SSCourses readenCourses2 = new SSCourses();
+		/*readenCourses = gson.fromJson(jsonCourses, SSCourses.class);
+		System.out.println(gson.toJson(readenCourses));*/
+		
+		readenCourses = xmlDb.readFromFile(new File("data.xml"), SSCourses.class);
+		System.out.println(xmlDb.marshal(readenCourses));
+		readenCourses2 = jsonDb.readFromFile(new File("data.json"), SSCourses.class);
+		System.out.println(jsonDb.marshal(readenCourses2));
+		
+		/*try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(SSCourses.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			readenCourses = (SSCourses) jaxbUnmarshaller.unmarshal(data);
@@ -121,7 +134,7 @@ public class App {
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 	}
 
