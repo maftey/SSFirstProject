@@ -90,13 +90,15 @@ public class App {
 		coursesList.add(javaCourse);
 		courses.setCourse(coursesList);
 		
-		SSDb xmlDb = new SSXmlDb();
-		SSDb jsonDb = new SSJsonDb();
+		SSIOInterface xmlIO = new SSXmlIO();
+		SSIOInterface jsonIO = new SSJsonIO();
+		SSDataConverterInterface xmlConvertor = new SSXMLConverter();
+		SSDataConverterInterface jsonConvertor = new SSJsonConverter();
 		
-		xmlDb.saveToFile(courses, new File("data.xml"));
-		jsonDb.saveToFile(courses, new File("data.json"));
-		System.out.println(xmlDb.marshal(courses));
-		System.out.println(jsonDb.marshal(courses));
+		xmlIO.saveToFile(courses, new File("data.xml"));
+		jsonIO.saveToFile(courses, new File("data.json"));
+		System.out.println(xmlConvertor.marshal(courses));
+		System.out.println(jsonConvertor.marshal(courses));
 		/*try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(SSCourses.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
@@ -118,10 +120,10 @@ public class App {
 		/*readenCourses = gson.fromJson(jsonCourses, SSCourses.class);
 		System.out.println(gson.toJson(readenCourses));*/
 		
-		readenCourses = xmlDb.readFromFile(new File("data.xml"), SSCourses.class);
-		System.out.println(xmlDb.marshal(readenCourses));
-		readenCourses2 = jsonDb.readFromFile(new File("data.json"), SSCourses.class);
-		System.out.println(jsonDb.marshal(readenCourses2));
+		readenCourses = xmlIO.readFromFile(new File("data.xml"), SSCourses.class);
+		System.out.println(xmlConvertor.marshal(readenCourses));
+		readenCourses2 = jsonIO.readFromFile(new File("data.json"), SSCourses.class);
+		System.out.println(jsonConvertor.marshal(readenCourses2));
 		
 		/*try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(SSCourses.class);

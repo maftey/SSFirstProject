@@ -1,6 +1,6 @@
 package ssdata;
 
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -9,8 +9,8 @@ import javax.xml.bind.annotation.XmlTransient;
 public abstract class SSBase {
 	protected String name;
 	private String description;
-	private GregorianCalendar beginDate;
-	private GregorianCalendar endDate;
+	private Calendar beginDate;
+	private Calendar endDate;
 
 	@XmlElement(name = "description")
 	public void setDescription(String description) {
@@ -21,21 +21,21 @@ public abstract class SSBase {
 		return description;
 	}
 
-	public GregorianCalendar getBeginDate() {
+	public Calendar getBeginDate() {
 		return beginDate;
 	}
 
 	@XmlElement(name = "beginDate")
-	public void setBeginDate(GregorianCalendar beginDate) {
+	public void setBeginDate(Calendar beginDate) {
 		this.beginDate = beginDate;
 	}
 
-	public GregorianCalendar getEndDate() {
+	public Calendar getEndDate() {
 		return endDate;
 	}
 
 	@XmlElement(name = "endDate")
-	public void setEndDate(GregorianCalendar endDate) {
+	public void setEndDate(Calendar endDate) {
 		this.endDate = endDate;
 	}
 
