@@ -24,6 +24,7 @@ public class SSCourse extends SSBase {
 	}
 
 	public void add(SSCourseModule module) {
+		if (modules == null) modules = new  LinkedHashSet<SSCourseModule>();
 		modules.add(module);
 	}
 }

@@ -19,6 +19,7 @@ public class SSCourses {
 	}
 
 	public void add(SSCourse course) {
+		if (courses == null) courses = new LinkedHashSet<SSCourse>();
 		courses.add(course);
 	}
 }

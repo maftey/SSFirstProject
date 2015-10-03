@@ -23,6 +23,7 @@ public class SSCourseModule extends SSBase {
 	}
 
 	public void add(SSLesson lesson) {
+		if (lessons == null) lessons = new LinkedHashSet<SSLesson>();
 		lessons.add(lesson);
 	}
 

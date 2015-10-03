@@ -1,15 +1,7 @@
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.LinkedHashSet;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-
-import com.google.gson.Gson;
 
 import ssdata.*;
 
@@ -99,44 +91,24 @@ public class App {
 		jsonIO.saveToFile(courses, new File("data.json"));
 		System.out.println(xmlConvertor.marshal(courses));
 		System.out.println(jsonConvertor.marshal(courses));
-		/*try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(SSCourses.class);
-			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-			jaxbMarshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
-			jaxbMarshaller.marshal( courses, System.out );
-			jaxbMarshaller.marshal( courses, new File("data.xml") );
-		} catch (JAXBException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		/*Gson gson = new Gson();
-		String jsonCourses = gson.toJson(courses);
-		System.out.println(jsonCourses);*/
 		
 		System.out.println("writed, read:");
 		
 		SSCourses readenCourses = new SSCourses();
 		SSCourses readenCourses2 = new SSCourses();
-		/*readenCourses = gson.fromJson(jsonCourses, SSCourses.class);
-		System.out.println(gson.toJson(readenCourses));*/
 		
 		readenCourses = xmlIO.readFromFile(new File("data.xml"), SSCourses.class);
 		System.out.println(xmlConvertor.marshal(readenCourses));
 		readenCourses2 = jsonIO.readFromFile(new File("data.json"), SSCourses.class);
 		System.out.println(jsonConvertor.marshal(readenCourses2));
 		
-		/*try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(SSCourses.class);
-			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			readenCourses = (SSCourses) jaxbUnmarshaller.unmarshal(data);
-			
-			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-			jaxbMarshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
-			jaxbMarshaller.marshal( readenCourses, System.out );
-		} catch (JAXBException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+		
+		SSSpecFormatReader creator = new SSSpecFormatReader();
+		creator.addSSObject("{\"C\", \"Java\", \"cours obut java\", \"2015-09-22 00:00\", \"2015-12-22 00:00\", \"\"}");
+		creator.addSSObject("{\"M\", \"Java module 1\", \"module obut java\", \"2015-09-22 00:00\", \"2015-12-22 00:00\", \"Java\"}");
+		creator.addSSObject("{\"L\", \"lesons 1\", \"the lessons 1\", "
+				+ "\"2015-12-22 00:00\", \"2015-12-22 00:00\", \"Java.Java module 1\", \"bla bla bla. bla blal bla\"}");
+		System.out.println(xmlConvertor.marshal(creator.getCourses()));
 		
 	}
 
