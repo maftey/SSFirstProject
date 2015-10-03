@@ -1,6 +1,7 @@
 package ssdata;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -54,6 +55,12 @@ public abstract class SSBase {
 		int result = 1;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
+	}
+	
+	public boolean isContinues() {
+		GregorianCalendar now = new GregorianCalendar();
+		return now.after(beginDate) && now.before(endDate);
+		
 	}
 
 	// TODO: maybe move it in child classes

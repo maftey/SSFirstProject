@@ -2,6 +2,7 @@ import java.io.File;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.LinkedHashSet;
+import java.util.List;
 
 import ssdata.*;
 
@@ -76,11 +77,28 @@ public class App {
 		javaCourse.setModules(javaModules);
 		javaCourse.setBeginDate(new GregorianCalendar(2015, Calendar.SEPTEMBER, 22));
 		javaCourse.setEndDate(new GregorianCalendar(2015, Calendar.DECEMBER, 22));
+		
+		SSCourse course1 = new SSCourse();
+		course1.setName("Course 1");
+		course1.setDescription("Course 1");
+		course1.setBeginDate(new GregorianCalendar(2015, Calendar.SEPTEMBER, 22));
+		course1.setEndDate(new GregorianCalendar(2015, Calendar.DECEMBER, 1));
+		SSCourse course2 = new SSCourse();
+		course2.setName("Course 2");
+		course2.setDescription("Course 2");
+		course2.setBeginDate(new GregorianCalendar(2015, Calendar.DECEMBER, 3));
+		course2.setEndDate(new GregorianCalendar(2015, Calendar.DECEMBER, 22));
 		//
 		SSCourses courses = new SSCourses();
 		LinkedHashSet<SSCourse> coursesList = new LinkedHashSet<SSCourse>();
 		coursesList.add(javaCourse);
+		coursesList.add(course1);
+		coursesList.add(course2);
 		courses.setCourse(coursesList);
+		
+		List<SSCourse> startedCourses = courses.getStartedCourses(
+				new GregorianCalendar(2015, Calendar.SEPTEMBER, 21), 
+				new GregorianCalendar(2015, Calendar.DECEMBER, 2));
 		
 		SSIOInterface xmlIO = new SSXmlIO();
 		SSIOInterface jsonIO = new SSJsonIO();
