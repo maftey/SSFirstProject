@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 //import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder = { "name", "description", "beginDate", "endDate", "modules" })
+@XmlType(propOrder = {"name", "description", "beginDate", "endDate", "modules"})
 // @XmlRootElement(name = "Course")
 public class SSCourse extends SSBase {
 	private LinkedHashSet<SSCourseModule> modules;
